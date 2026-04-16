@@ -93,6 +93,10 @@ app = FastAPI(lifespan=lifespan)
 def health():
     return {"status": "ok"}
 
+@app.get("/")
+def root():
+    return {"status": "ok", "message": "Service is running"}
+
 @app.post("/predict")
 async def predict(request: Request):
     global model, scaler, encoders
